@@ -1,0 +1,4 @@
+name: LevelSystem
+version: '${project.version}'
+main: info.ahaha.levelsystem.LevelSystem
+api-version: 1.18
