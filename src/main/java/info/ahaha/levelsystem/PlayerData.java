@@ -62,6 +62,10 @@ public class PlayerData {
         data.add(this);
     }
 
+    private double truncate(double value){
+        double scale = Math.pow(10, 3);
+        return Math.round(value*scale)/scale;
+    }
 
     public UUID getUuid() {
         return uuid;
@@ -99,27 +103,27 @@ public class PlayerData {
 
     public double getAtk() {
         Player player = Bukkit.getPlayer(uuid);
-        return player.getPersistentDataContainer().get(getKeys().get("atk"), PersistentDataType.DOUBLE);
+        return truncate(player.getPersistentDataContainer().get(getKeys().get("atk"), PersistentDataType.DOUBLE));
     }
 
     public double getDef() {
         Player player = Bukkit.getPlayer(uuid);
-        return player.getPersistentDataContainer().get(getKeys().get("def"), PersistentDataType.DOUBLE);
+        return truncate(player.getPersistentDataContainer().get(getKeys().get("def"), PersistentDataType.DOUBLE));
     }
 
     public double getHp() {
         Player player = Bukkit.getPlayer(uuid);
-        return player.getPersistentDataContainer().get(getKeys().get("hp"), PersistentDataType.DOUBLE);
+        return truncate(player.getPersistentDataContainer().get(getKeys().get("hp"), PersistentDataType.DOUBLE));
     }
 
     public double getSpeed() {
         Player player = Bukkit.getPlayer(uuid);
-        return player.getPersistentDataContainer().get(getKeys().get("speed"), PersistentDataType.DOUBLE);
+        return truncate(player.getPersistentDataContainer().get(getKeys().get("speed"), PersistentDataType.DOUBLE));
     }
 
     public double getKnockBack() {
         Player player = Bukkit.getPlayer(uuid);
-        return player.getPersistentDataContainer().get(getKeys().get("knockBack"), PersistentDataType.DOUBLE);
+        return truncate(player.getPersistentDataContainer().get(getKeys().get("knockBack"), PersistentDataType.DOUBLE));
     }
 
     public Map<String, NamespacedKey> getKeys() {
@@ -175,71 +179,71 @@ public class PlayerData {
         Player player = Bukkit.getPlayer(uuid);
         NamespacedKey key = getKeys().get("atk");
         double def = player.getPersistentDataContainer().get(key, PersistentDataType.DOUBLE);
-        double value = LevelSystem.plugin.manager.getConfig().getInt("Status.ATK");
-        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, def + value);
+        double value = LevelSystem.plugin.manager.getConfig().getDouble("Status.ATK");
+        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, truncate(def + value));
 
     }
 
     public void setAtk(double value) {
         Player player = Bukkit.getPlayer(uuid);
         NamespacedKey key = getKeys().get("atk");
-        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, value);
+        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, truncate(value));
     }
 
     public void addDef() {
         Player player = Bukkit.getPlayer(uuid);
         NamespacedKey key = getKeys().get("def");
         double def = player.getPersistentDataContainer().get(key, PersistentDataType.DOUBLE);
-        double value = LevelSystem.plugin.manager.getConfig().getInt("Status.ATK");
-        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, def + value);
+        double value = LevelSystem.plugin.manager.getConfig().getDouble("Status.DEF");
+        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, truncate(def + value));
     }
 
     public void setDef(double value) {
         Player player = Bukkit.getPlayer(uuid);
         NamespacedKey key = getKeys().get("def");
-        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, value);
+        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, truncate(value));
     }
 
     public void addSpeed() {
         Player player = Bukkit.getPlayer(uuid);
         NamespacedKey key = getKeys().get("speed");
-        double value = LevelSystem.plugin.manager.getConfig().getInt("Status.ATK");
+        double value = LevelSystem.plugin.manager.getConfig().getDouble("Status.SPEED");
         double def = player.getPersistentDataContainer().get(key, PersistentDataType.DOUBLE);
-        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, def + value);
+        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, truncate(def + value));
     }
 
     public void setSpeed(double value) {
         Player player = Bukkit.getPlayer(uuid);
         NamespacedKey key = getKeys().get("speed");
-        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, value);
+        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, truncate(value));
     }
 
     public void addHp() {
         Player player = Bukkit.getPlayer(uuid);
         NamespacedKey key = getKeys().get("hp");
-        int value = LevelSystem.plugin.manager.getConfig().getInt("Status.ATK");
+        double value = LevelSystem.plugin.manager.getConfig().getDouble("Status.HP");
         double def = player.getPersistentDataContainer().get(key, PersistentDataType.DOUBLE);
-        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, def + value);
+        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, truncate(def + value));
     }
 
     public void setHp(double value) {
         Player player = Bukkit.getPlayer(uuid);
         NamespacedKey key = getKeys().get("hp");
-        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, value);
+        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, truncate(value));
     }
 
     public void addKnockBack() {
         Player player = Bukkit.getPlayer(uuid);
         NamespacedKey key = getKeys().get("knockBack");
-        int value = LevelSystem.plugin.manager.getConfig().getInt("Status.KNOCKBACK");
+        double value = LevelSystem.plugin.manager.getConfig().getDouble("Status.KNOCKBACK");
         double def = player.getPersistentDataContainer().get(key, PersistentDataType.DOUBLE);
-        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, def + value);
+        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, truncate(def + value));
     }
 
     public void setKnockBack(double value) {
         Player player = Bukkit.getPlayer(uuid);
         NamespacedKey key = getKeys().get("knockBack");
-        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, value);
+        player.getPersistentDataContainer().set(key, PersistentDataType.DOUBLE, truncate(value));
     }
 
     public void levelUp(int exp) {

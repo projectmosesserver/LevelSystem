@@ -3,6 +3,7 @@ package info.ahaha.levelsystem;
 import info.ahaha.levelsystem.listener.CommandListener;
 import info.ahaha.levelsystem.listener.EntityKillListener;
 import info.ahaha.levelsystem.listener.JoinListener;
+import info.ahaha.levelsystem.listener.SkillMenuListener;
 import info.ahaha.levelsystem.util.DataManager;
 import info.ahaha.levelsystem.util.MessageUtil;
 import info.ahaha.levelsystem.util.StatusManager;
@@ -72,6 +73,7 @@ public final class LevelSystem extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
         getServer().getPluginManager().registerEvents(new CommandListener(), this);
         getServer().getPluginManager().registerEvents(new EntityKillListener(), this);
+        getServer().getPluginManager().registerEvents(new SkillMenuListener(), this);
     }
 
     private PlayerData getPlayerData(UUID uuid) {
