@@ -1,0 +1,184 @@
+
+## スキルポイント１振る毎に増える量
+
+Status:
+  HP: 1
+  ATK: 0.2
+  DEF: 0.2
+  KNOCKBACK: 0.02
+  SPEED: 0.005
+
+
+## デフォルト経験値 + レベル×倍率 = リザルト経験値
+## 金額 + レベル×倍率 = リザルト金額
+
+BAT:
+  DefaultExp: 1
+  Magnification: 0.1
+  DropMoney: 1
+
+BLAZE:
+  DefaultExp: 50
+  Magnification: 1.2
+  DropMoney: 1
+
+CAVE_SPIDER:
+  DefaultExp: 10
+  Magnification: 1.0
+  DropMoney: 1
+
+CREEPER:
+  DefaultExp: 15
+  Magnification: 1.0
+  DropMoney: 1
+
+DROWNED:
+  DefaultExp: 10
+  Magnification: 1.0
+  DropMoney: 1
+
+ELDER_GUARDIAN:
+  DefaultExp: 100
+  Magnification: 2.5
+  DropMoney: 1
+
+ENDER_DRAGON:
+  DefaultExp: 10000
+  Magnification: 3.5
+  DropMoney: 1
+
+ENDERMAN:
+  DefaultExp: 30
+  Magnification: 1.0
+  DropMoney: 1
+
+ENDERMITE:
+  DefaultExp: 5000
+  Magnification: 1.5
+  DropMoney: 1
+
+EVOKER:
+  DefaultExp: 30
+  Magnification: 1.0
+  DropMoney: 1
+
+GHAST:
+  DefaultExp: 50
+  Magnification: 1.2
+  DropMoney: 1
+
+GUARDIAN:
+  DefaultExp: 30
+  Magnification: 1.0
+  DropMoney: 1
+
+HOGLIN:
+  DefaultExp: 20
+  Magnification: 1.2
+  DropMoney: 1
+
+HUSK:
+  DefaultExp: 10
+  Magnification: 1.0
+  DropMoney: 1
+
+MAGMA_CUBE:
+  DefaultExp: 30
+  Magnification: 1.2
+  DropMoney: 1
+
+PHANTOM:
+  DefaultExp: 30
+  Magnification: 1.0
+  DropMoney: 1
+
+PIGLIN:
+  DefaultExp: 20
+  Magnification: 1.2
+  DropMoney: 1
+
+PIGLIN_BRUTE:
+  DefaultExp: 50
+  Magnification: 1.5
+  DropMoney: 1
+
+PILLAGER:
+  DefaultExp: 30
+  Magnification: 1.0
+  DropMoney: 1
+
+RAVAGER:
+  DefaultExp: 30
+  Magnification: 1.0
+  DropMoney: 1
+
+SHULKER:
+  DefaultExp: 100
+  Magnification: 1.5
+  DropMoney: 1
+
+SILVERFISH:
+  DefaultExp: 10
+  Magnification: 1.0
+  DropMoney: 1
+
+SKELETON:
+  DefaultExp: 15
+  Magnification: 1.0
+  DropMoney: 1
+
+SLIME:
+  DefaultExp: 20
+  Magnification: 1.0
+  DropMoney: 1
+
+SPIDER:
+  DefaultExp: 10
+  Magnification: 1.0
+  DropMoney: 1
+
+STRAY:
+  DefaultExp: 100
+  Magnification: 2.5
+  DropMoney: 1
+
+VINDICATOR:
+  DefaultExp: 30
+  Magnification: 1.0
+  DropMoney: 1
+
+WITCH:
+  DefaultExp: 20
+  Magnification: 1.0
+  DropMoney: 1
+
+WITHER:
+  DefaultExp: 10000
+  Magnification: 3.5
+  DropMoney: 1
+
+WITHER_SKELETON:
+  DefaultExp: 100
+  Magnification: 1.5
+  DropMoney: 1
+
+ZOGLIN:
+  DefaultExp: 20
+  Magnification: 1.5
+  DropMoney: 1
+
+ZOMBIE:
+  DefaultExp: 10
+  Magnification: 1.0
+  DropMoney: 1
+
+ZOMBIFIED_PIGLIN:
+  DefaultExp: 15
+  Magnification: 1.5
+  DropMoney: 1
+
+ZOMBIE_VILLAGER:
+  DefaultExp: 10
+  Magnification: 1.0
+  DropMoney: 1
+
