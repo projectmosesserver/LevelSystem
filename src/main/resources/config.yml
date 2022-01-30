@@ -8,6 +8,19 @@ Status:
   KNOCKBACK: 0.02
   SPEED: 0.005
 
+Items:
+  EXPBoost:
+    MaxLevel: 3
+    1:
+      Magnification: 2.0
+      Sec: 30
+    2:
+      Magnification: 2.0
+      Sec: 60
+    3:
+      Magnification: 2.0
+      Sec: 90
+
 
 ## デフォルト経験値 + レベル×倍率 = リザルト経験値
 ## 金額 + レベル×倍率 = リザルト金額

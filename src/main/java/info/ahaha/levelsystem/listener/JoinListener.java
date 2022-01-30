@@ -1,7 +1,9 @@
 package info.ahaha.levelsystem.listener;
 
+import info.ahaha.levelsystem.ItemData;
 import info.ahaha.levelsystem.LevelSystem;
 import info.ahaha.levelsystem.PlayerData;
+import info.ahaha.levelsystem.SkillType;
 import org.bukkit.Bukkit;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -24,7 +26,7 @@ public class JoinListener implements Listener {
         if (data == null) {
             data = new PlayerData(player);
         }
-        data.statusReset();
+        LevelSystem.plugin.statusManager.reJoinUpdateStatus(player);
     }
 
     public PlayerData getPlayerData(UUID uuid) {
