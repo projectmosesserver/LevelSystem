@@ -53,11 +53,10 @@ public class BoostRunnable implements Runnable {
                     if (!b.isVisible())
                         b.setVisible(true);
                     player.getPersistentDataContainer().set(plugin.getBoostLv1Key(), PersistentDataType.INTEGER, i - 1);
-                }
-            } else if (player.getPersistentDataContainer().has(plugin.getTimeKey(), PersistentDataType.INTEGER)) {
-                if (player.getPersistentDataContainer().has(plugin.getBoostLv2Key(), PersistentDataType.INTEGER)) {
+                } else if (player.getPersistentDataContainer().has(plugin.getBoostLv2Key(), PersistentDataType.INTEGER)) {
                     int i = player.getPersistentDataContainer().get(plugin.getBoostLv2Key(), PersistentDataType.INTEGER);
                     int timer = player.getPersistentDataContainer().get(plugin.getTimeKey(), PersistentDataType.INTEGER);
+                    getLogger().info("lv2runnable");
                     BossBar b = bars.get(player.getUniqueId());
                     if (i - 1 < 0) {
                         player.getPersistentDataContainer().remove(plugin.getBoostLv2Key());
@@ -75,9 +74,7 @@ public class BoostRunnable implements Runnable {
                     if (!b.isVisible())
                         b.setVisible(true);
                     player.getPersistentDataContainer().set(plugin.getBoostLv2Key(), PersistentDataType.INTEGER, i - 1);
-                }
-            } else if (player.getPersistentDataContainer().has(plugin.getTimeKey(), PersistentDataType.INTEGER)) {
-                if (player.getPersistentDataContainer().has(plugin.getBoostLv3Key(), PersistentDataType.INTEGER)) {
+                } else if (player.getPersistentDataContainer().has(plugin.getBoostLv3Key(), PersistentDataType.INTEGER)) {
                     int i = player.getPersistentDataContainer().get(plugin.getBoostLv3Key(), PersistentDataType.INTEGER);
                     int timer = player.getPersistentDataContainer().get(plugin.getTimeKey(), PersistentDataType.INTEGER);
                     BossBar b = bars.get(player.getUniqueId());

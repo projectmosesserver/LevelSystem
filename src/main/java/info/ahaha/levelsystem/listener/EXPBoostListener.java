@@ -65,6 +65,7 @@ public class EXPBoostListener implements Listener {
                         t = player.getPersistentDataContainer().get(LevelSystem.plugin.getTimeKey(), PersistentDataType.INTEGER);
                     player.getPersistentDataContainer().set(LevelSystem.plugin.getBoostLv2Key(), PersistentDataType.INTEGER, i + data.getSec());
                     player.getPersistentDataContainer().set(LevelSystem.plugin.getTimeKey(), PersistentDataType.INTEGER, t + data.getSec());
+                    getLogger().info("lv2");
                     players.add(player);
                     new BukkitRunnable() {
                         @Override

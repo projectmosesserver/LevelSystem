@@ -1,6 +1,7 @@
 package info.ahaha.levelsystem.listener;
 
 import info.ahaha.levelsystem.EntityData;
+import info.ahaha.levelsystem.LevelSystem;
 import info.ahaha.levelsystem.PlayerData;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.event.EventHandler;
@@ -23,8 +24,16 @@ public class EntityKillListener implements Listener {
         if (pdata == null) return;
         for (EntityData data : EntityData.data) {
             if (e.getEntity().getType() == data.getType()) {
-                pdata.levelUp((int) data.getResultExp(getLevel(e.getEntity())));
-                pdata.addMoney((int) data.getResultMoney(getLevel(e.getEntity())));
+                int exp = 0;
+                int money = 0;
+                if (e.getEntity().getCustomName() != null) {
+                    if (e.getEntity().getCustomName().contains("[Rare]")) {
+                        exp = LevelSystem.plugin.manager.getConfig().getInt("Rare.Exp");
+                        money = LevelSystem.plugin.manager.getConfig().getInt("Rare.Money");
+                    }
+                }
+                pdata.levelUp((int) data.getResultExp(getLevel(e.getEntity())+exp));
+                pdata.addMoney((int) data.getResultMoney(getLevel(e.getEntity())+money));
                 break;
             }
         }
