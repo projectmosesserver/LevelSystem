@@ -111,14 +111,12 @@ public class PlayerData {
         Player player = Bukkit.getPlayer(uuid);
         for (Skill skill : LevelSystem.plugin.skills.values()) {
             if (skill.getAcquisitionLevel() <= level) {
-                if (!getSkills().contains(skill.getType().name())) {
+                if (!getSkillList().contains(skill.getType().name())) {
                     PlayerAcquisitionSkillEvent playerAcquisitionSkillEvent = new PlayerAcquisitionSkillEvent(player, skill);
                     getServer().getPluginManager().callEvent(playerAcquisitionSkillEvent);
                     if (!playerAcquisitionSkillEvent.isCancelled()) {
                         addSkill(playerAcquisitionSkillEvent.getSkill().getType().name());
-                        getLogger().info(playerAcquisitionSkillEvent.getSkill().getName());
                     }
-                    break;
                 }
             }
         }

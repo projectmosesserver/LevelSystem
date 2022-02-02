@@ -1,9 +1,10 @@
 package info.ahaha.levelsystem;
 
+import info.ahaha.levelsystem.cmd.Cmd;
 import info.ahaha.levelsystem.listener.*;
 import info.ahaha.levelsystem.runnable.BoostRunnable;
 import info.ahaha.levelsystem.runnable.CoolTimeRunnable;
-import info.ahaha.levelsystem.skill.Slash;
+import info.ahaha.levelsystem.skill.*;
 import info.ahaha.levelsystem.util.*;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.Bukkit;
@@ -16,9 +17,9 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.PotionMeta;
-import org.bukkit.persistence.PersistentDataType;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.checkerframework.checker.units.qual.C;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -36,6 +37,7 @@ public final class LevelSystem extends JavaPlugin {
     public FunctionItems items;
     public ContainerUtil containerUtil;
     public MaterialToolUtil materialToolUtil;
+    public ParticleUtil particleUtil;
     public Map<SkillType , Skill> skills = new HashMap<>();
     private static Economy econ = null;
     private static final Logger log = Logger.getLogger("Minecraft");
@@ -64,6 +66,7 @@ public final class LevelSystem extends JavaPlugin {
         this.items = new FunctionItems();
         this.containerUtil = new ContainerUtil();
         this.materialToolUtil = new MaterialToolUtil();
+        this.particleUtil = new ParticleUtil();
 
         Path path = Paths.get(String.valueOf(plugin.getDataFolder()));
         if (!Files.exists(path)) {
@@ -90,7 +93,7 @@ public final class LevelSystem extends JavaPlugin {
         for (int i = 1; i <= manager.getConfig().getInt("Items.EXPBoost.MaxLevel"); i++) {
             ItemStack item = new ItemStack(Material.POTION);
             PotionMeta meta = (PotionMeta) item.getItemMeta();
-            String name = "EXPBoostPotion Lv." + i;
+            String name = "EXPBoostPotion_Lv." + i;
             int sec = manager.getConfig().getInt("Items.EXPBoost." + i + ".Sec");
             double magnification = manager.getConfig().getDouble("Items.EXPBoost." + i + ".Magnification");
             meta.setDisplayName(ChatColor.GOLD + name);
@@ -119,6 +122,9 @@ public final class LevelSystem extends JavaPlugin {
 
         skillPut();
 
+        getCommand("levelsystem").setExecutor(new Cmd());
+        getCommand("levelsystem").setTabCompleter(new Cmd());
+
         getServer().getPluginManager().registerEvents(new EXPBoostListener(), this);
         getServer().getPluginManager().registerEvents(new JoinListener(), this);
         getServer().getPluginManager().registerEvents(new QuitListener(), this);
@@ -129,6 +135,8 @@ public final class LevelSystem extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new LevelUpListener(), this);
         getServer().getPluginManager().registerEvents(new AcquisitionSkillListener(), this);
         getServer().getPluginManager().registerEvents(new ExpGainListener(), this);
+        getServer().getPluginManager().registerEvents(new SkillActiveListener(), this);
+        getServer().getPluginManager().registerEvents(new DimensionBoxListener(), this);
 
         getServer().getScheduler().runTaskTimer(this, new BoostRunnable(this, this.bars), 0, 20);
         getServer().getScheduler().runTaskTimer(this, new CoolTimeRunnable(this,this.coolBars), 0, 20);
@@ -203,6 +211,14 @@ public final class LevelSystem extends JavaPlugin {
 
     private void skillPut(){
         skills.put(SkillType.SLASH,new Slash());
+        skills.put(SkillType.SHIELD_BASH,new ShieldBash());
+        skills.put(SkillType.AUTO_SMELT,new AutoSmelt());
+        skills.put(SkillType.JUMP_SLASH,new JumpSlash());
+        skills.put(SkillType.EXPLODE_ARROW,new ExplodeArrow());
+        skills.put(SkillType.TELEPORT,new Teleport());
+        skills.put(SkillType.MULTI_SHOOT,new MultiShoot());
+        skills.put(SkillType.AUTO_HARVEST,new AutoHarvest());
+        skills.put(SkillType.DIMENSION_BOX,new DimensionBox());
     }
     @Override
     public void onDisable() {

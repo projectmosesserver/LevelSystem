@@ -27,6 +27,13 @@ public class EXPBoostListener implements Listener {
         for (ItemData data : ItemData.data) {
             if (e.getItem().isSimilar(data.getItem())) {
                 if (data.getItem().getItemMeta().getDisplayName().contains("Lv.1")) {
+                    if (player.getPersistentDataContainer().has(LevelSystem.plugin.getBoostLv2Key(), PersistentDataType.INTEGER)||
+                            player.getPersistentDataContainer().has(LevelSystem.plugin.getBoostLv3Key(), PersistentDataType.INTEGER)
+                    ){
+                        e.setCancelled(true);
+                        LevelSystem.plugin.message.sendError(player,"すでにほかのブーストポーションを飲んでいるため使用できません！");
+                        return;
+                    }
                     int i = 0;
                     int t = 0;
                     if (player.getPersistentDataContainer().has(LevelSystem.plugin.getBoostLv1Key(), PersistentDataType.INTEGER))
@@ -43,6 +50,13 @@ public class EXPBoostListener implements Listener {
                         }
                     }.runTaskLater(LevelSystem.plugin, 2);
                 } else if (data.getItem().getItemMeta().getDisplayName().contains("Lv.2")) {
+                    if (player.getPersistentDataContainer().has(LevelSystem.plugin.getBoostLv1Key(), PersistentDataType.INTEGER)||
+                            player.getPersistentDataContainer().has(LevelSystem.plugin.getBoostLv3Key(), PersistentDataType.INTEGER)
+                    ){
+                        e.setCancelled(true);
+                        LevelSystem.plugin.message.sendError(player,"すでにほかのブーストポーションを飲んでいるため使用できません！");
+                        return;
+                    }
                     int i = 0;
                     int t = 0;
                     if (player.getPersistentDataContainer().has(LevelSystem.plugin.getBoostLv2Key(), PersistentDataType.INTEGER))
@@ -59,6 +73,13 @@ public class EXPBoostListener implements Listener {
                         }
                     }.runTaskLater(LevelSystem.plugin, 2);
                 } else if (data.getItem().getItemMeta().getDisplayName().contains("Lv.3")) {
+                    if (player.getPersistentDataContainer().has(LevelSystem.plugin.getBoostLv2Key(), PersistentDataType.INTEGER)||
+                            player.getPersistentDataContainer().has(LevelSystem.plugin.getBoostLv1Key(), PersistentDataType.INTEGER)
+                    ){
+                        e.setCancelled(true);
+                        LevelSystem.plugin.message.sendError(player,"すでにほかのブーストポーションを飲んでいるため使用できません！");
+                        return;
+                    }
                     int i = 0;
                     int t = 0;
                     if (player.getPersistentDataContainer().has(LevelSystem.plugin.getBoostLv3Key(), PersistentDataType.INTEGER))
